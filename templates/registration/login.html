@@ -50,6 +50,12 @@
             {{ form.as_p }}
             <button type="submit">Login</button>
         </form>
+
+        <form method="post" action="{% url 'register' %}" style="display: inline;">
+            {% csrf_token %}
+            <input type="hidden" name="task_id" value="{{ task.id }}">
+            <button style="background-color: red; color: white; border: 0;" type="submit">Register</button>
+        </form>
     </div>
     
 

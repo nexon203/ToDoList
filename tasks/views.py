@@ -16,7 +16,7 @@ def create_task(request):
 
 
 def task_list(request):
-    tasks = Task.objects.all()
+    tasks = Task.objects.filter(user=request.user.id)
     return render(request, 'tasks/task_list.html', {'tasks': tasks})
 
 
@@ -41,12 +41,12 @@ def delete_task(request, task_id):
 
 
 def pending_task(request):
-    tasks = Task.objects.filter(status=False)
+    tasks = Task.objects.filter(status=False, user=request.user.id)
     return render(request, 'tasks/task_list.html', {'tasks': tasks})
 
 
 def completed_task(request):
-    tasks = Task.objects.filter(status=True)
+    tasks = Task.objects.filter(status=True, user=request.user.id)
     return render(request, 'tasks/task_list.html', {'tasks': tasks})
 
 
