@@ -1,8 +1,7 @@
-from django.shortcuts import render
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from tasks.forms import TaskForm
 from tasks.models import Task
-from django.shortcuts import render, get_object_or_404
+
 
 def create_task(request):
     if request.method == 'POST':
